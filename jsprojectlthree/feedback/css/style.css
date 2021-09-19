@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Mulish', sans-serif;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+}
+.rating img{
+    width: 40px;
+}
+.panel-container{
+    width: 400px;
+    background-color: #fff;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    font-size: 90%;
+    text-align: center;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.ratings-container{
+    display: flex;
+    margin: 20px 0;
+}
+.rating{
+    padding: 20px;
+    cursor: pointer;
+}
+.rating:hover,
+.rating.active{
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.rating small{
+    display: inline-block;
+    color: #555;
+    margin: 10px 0;
+}
+.rating:hover small,
+.rating.active small{
+    color: blue;
+}
+.btn{
+    background-color: #384047;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn:focus{
+    outline: none;
+}
+.btn:active{
+    transform: scale(0.98);
+}
+.fa-heart{
+    color: #ff0000;
+    margin-bottom: 10px;
+}

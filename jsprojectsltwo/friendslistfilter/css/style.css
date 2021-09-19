@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@500&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Mulish', sans-serif;
+    background-color: #f4f4f4;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    overflow: hidden;
+}
+
+.container{
+    width: 300px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.header{
+    background: linear-gradient(
+        20deg,
+        #0aacf2,
+        #f2350a
+    );
+    color: #fff;
+    padding: 30px 20px;
+}
+
+.title{
+    margin: 0;
+}
+
+.subtitle{
+    display: inline-block;
+    margin: 0 0 20px;
+    opacity: 0.8;
+}
+
+.header .filter{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 15px;
+}
+
+.header .filter:focus{
+    outline: none;
+}
+
+.userlist{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #fff;
+    max-height: 400px;
+
+    overflow-y: auto;
+}
+
+.userlist li{
+    display: flex;
+    padding: 20px;
+}
+
+.userlist img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+.userlist .userinfo{
+    margin-left: 10px;
+}
+
+.userlist .userinfo h4{
+    margin: 0 0 10px;
+}
+
+.userlist .userinfo p{
+    font-size: 12px;
+}
+
+.userlist li:not(:last-of-type){
+    border-bottom: 1px solid #eee;
+}
+
+.userlist li.hide{
+    display: none;
+}

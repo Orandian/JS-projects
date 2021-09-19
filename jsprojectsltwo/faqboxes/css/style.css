@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Mulish', sans-serif;
+    background-color: #f0f0f0;
+}
+
+h1{
+    text-align: center;
+    margin: 50px 0 30px;
+}
+
+.faq-container{
+    max-width: 600px;
+    margin: auto;
+}
+
+.faq{
+    background-color: transparent;
+    border: 1px solid #999;
+    border-radius: 10px;
+    margin: 20px 0;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 1s ease-in-out;
+}
+
+.faq.active{
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: all 1s ease-in-out;
+}
+
+.faq.active::before,
+.faq.active::after{
+    content: '\f075';
+    font-family: "Font Awesome 5 Free";
+    color: #34eb3d;
+    font-size: 7rem;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    opacity: 0.2;
+}
+.faq.active::before{
+    color: #247ce0;
+    transform: rotateY(180deg);
+    top: -22.5px;
+    left: -30px;
+}
+
+.faq-title{
+    margin: 0 30px 0 0;
+}
+
+.faq-text{
+    display: none;
+}
+
+.faq.active .faq-text{
+    display: block;
+}
+
+.fas-toggle{
+    width: 30px;
+    height: 30px;
+    /* background-color: red; */
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.fas-toggle .fa-times{
+    display: none;
+}
+
+.faq.active .fas-toggle .fa-times{
+    display: block;
+    color: #fff;
+}
+.faq.active .fas-toggle .fa-chevron-down{
+    display: none;
+}
+
+.faq.active .fas-toggle{
+    background-color: #999;
+}
+
+.fas-toggle:focus{
+    outline: none;
+}

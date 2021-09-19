@@ -1,0 +1,65 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+.btn-icon{
+    width: 5rem;
+    height: 5rem;
+    background-color: #eb0985;
+    color: #fff;
+    font-size: 1.5rem;
+    border-radius: 100%;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    bottom: 1.5rem;
+    right: 3rem;
+    transition: all 0.3s;
+}
+.btns.show .btn-icon:nth-of-type(1){
+    background-color: #110873;
+    bottom: 7.3rem;
+}
+.btns.show .btn-icon:nth-of-type(2){
+    background-color: #0eb0eb;
+    bottom: 12.3rem;
+}
+.btns.show .btn-icon:nth-of-type(3){
+    background-color: #0eeb42;
+    bottom: 17.3rem;
+}
+.btns.show .btn-icon:nth-of-type(4){
+    background-color: #eb5f0e;
+    bottom: 22.3rem;
+}
+.btns .btn-icon{
+    width: 4rem;
+    height: 4rem;
+    font-size: 1rem;
+    right: 3.5rem;
+}
+.btns + .btn-icon i{
+    animation: myani 2s linear infinite;
+}
+.btns.show +  .btn-icon i{
+    animation: myani 2s linear reverse infinite;
+}
+@keyframes myani{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

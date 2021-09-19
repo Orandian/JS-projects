@@ -1,0 +1,89 @@
+:root{
+    --primary-color: #067815;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f4f4f4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+h1{
+    color: var(--primary-color);
+}
+
+.btn{
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px 12px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.btn:active{
+    transform: scale(0.9);
+}
+
+.money-img{
+    width: 150px;
+}
+
+.currency{
+    padding: 40px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.currency select{
+    font-size: 16px;
+    padding: 10px 20px 10px 20px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid #dedede;
+    background: transparent;
+    background-image: url(../img/downarrow.png);
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-position: right;
+    background-position-x: 90%;
+}
+
+.currency input{
+    border: 0;
+    background: transparent;
+    text-align: right;
+    font-size: 30px;
+}
+
+select:focus,input:focus,button:focus{
+    outline: 0;
+}
+
+.swap-rate-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media(max-width: 600px){
+    .currency input{
+        width: 250px;
+    }   
+}

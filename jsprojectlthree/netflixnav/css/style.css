@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: "Mulish", sans-serif;
+    background-color: #f5f5f5;
+    color: #444;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+.logo{
+    width: 150px;
+}
+.text{
+    text-transform: uppercase;
+}
+.nav-btn{
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.open-btn{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: all 0.3s ease-in-out;
+}
+.nav.visible{
+    transform: translateX(0);
+}
+.nav-black{
+    width: 60%;
+    max-width: 480px;
+    min-width: 320px;
+    background-color: #000;
+    transition-delay: 0.4ss;
+}
+.nav-black.visible{
+    transition-delay: 0s;
+}
+.nav-red{
+    width: 95%;
+    background-color: #f00;
+
+    transition-delay: 0.2s;
+}
+.nav-red.visible{
+    transition-delay: 0.2s;
+}
+.nav-white{
+    width: 95%;
+    background-color: #fff;
+    padding: 40px;
+    position: relative;
+    transition-delay: 0s;
+}
+.nav-white.visible{
+    transition-delay: 0.4s;
+}
+.close-btn{
+    position: absolute;
+    top: 40px;
+    right: 30px;
+    opacity: 0.3;
+}
+.list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.list li{
+    margin: 20px 0;
+    list-style-type: none;
+}
+.list li a{
+    color: #666;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.list ul{
+    padding-left: 20px;
+}

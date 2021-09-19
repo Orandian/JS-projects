@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #000;
+    display: flex;
+    margin: 0;
+    padding-top: 3rem;
+    flex-wrap: wrap;
+}
+.add{
+    background-color: yellowgreen;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    position: fixed;
+    padding: 0.5rem 1rem;
+    top: 1rem;
+    right: 1rem;
+}
+.note{
+    width: 300px;
+    height: 300px;
+    background-color: #f4f4f4;
+    border-radius: 0 0 30px 0;
+    margin: 30px 20px;
+    overflow: hidden;
+}
+.note .tools{
+    background-color: yellowgreen;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;
+}
+.note .tools button{
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+.note .tools button:focus{
+    outline: 0;
+}
+.note textarea{
+    width: 100%;
+    height: 100%;
+    font-family: inherit;
+    font-size: 1.2rem;
+    border: 0;
+    padding: 20px;
+}
+.note textarea:focus{
+    outline: 0;
+}
+.main{
+    padding: 20px;
+}
+.hidden{
+    display: none;
+}

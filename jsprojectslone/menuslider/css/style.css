@@ -1,0 +1,203 @@
+:root{
+    --primary-color:#30336b;
+    --secondary-color: #be2edd;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin:0;
+}
+
+nav{
+    width:200px;
+    height:100vh;
+    background-color:var(--primary-color);
+    color:#fff;
+
+    position:fixed;
+
+    z-index: 100;
+
+    border-right:2px solid rgba(200,200,200,1);
+
+    top:0;
+    left:0;
+    transform: translateX(-100%);
+
+}
+
+.show-nav{
+    transform: translateX(200px);
+}
+
+nav .logo img{
+    width:75px;
+    height:75px;
+    border-radius: 50%;
+}
+
+nav .logo{
+
+            /* top&bottom left&right */
+    padding:30px 0;
+    text-align: center;
+}
+
+nav ul{
+    list-style-type: none;
+    padding:0;
+    margin: 0;
+}
+
+nav ul li{
+    padding:20px;
+    border-bottom: 2px solid rgba(200,200,200,0.1);
+}
+
+nav ul li:first-of-type{
+    border-top: 2px solid rgba(200,200,200,0.1);
+}
+
+
+nav ul li a{
+    color:#fff;
+    text-decoration: none;
+}
+
+nav ul li a:hover{
+    text-decoration: underline;
+}
+
+header{
+    background:var(--primary-color);
+    color:#fff;
+    font-size:130%;
+            /* top&bottom left&right */
+    padding:40px 15px;
+    text-align: center;
+}
+
+button, input[type="submit"]{
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    color:#fff;
+    cursor: pointer;
+    /* top&bottom left&right */
+    padding:8px 12px;
+}
+
+.signup-btn{
+    font-size: 20px;
+        /* top&bottom left&right */
+    padding: 12px 30px;
+}
+
+
+.toggle{
+    background-color: rgba(0,0,0,0.3);
+    left:20px;
+    top:20px;
+    position:absolute;
+}
+
+
+header h1{
+    margin: 0;
+}
+
+header p{
+            /* top&bottom left&right */
+    margin: 30px 0;
+}
+
+.container{
+    padding:15px;
+    width:800px;
+            /* top&bottom left&right */
+    margin: 0 auto;
+
+    max-width:100%;
+}
+
+
+.modal-container{
+    background-color: rgba(0,0,0,0.6);
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    position:fixed;
+
+    display: none;
+}
+
+.modal-container.show-modal{
+    display: block;
+}
+
+
+
+.modal{
+    background-color: #fff;
+    width:400px;
+
+    border-radius: 5px;
+        /* hvbc */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    position: absolute;
+
+    animation-name: modalopen;
+    animation-duration: 1s;
+}
+
+@keyframes modalopen{
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+
+
+.close-btn{
+    background:transparent;
+    font-size: 25px;
+    border:0;
+    position: absolute;
+    top:0;
+    right:0;
+}
+
+.modal-header{
+    background-color:var(--primary-color);
+    color:#fff;
+    padding:15px;
+}
+
+.modal-content{
+    padding:20px;
+}
+
+.modal-form div{
+            /* top&bottom left&right */
+    margin:15px 0;
+}
+
+.modal-form label{
+    display: block;
+    margin-bottom: 1px;
+}
+
+.modal-form .form-control{
+    width: 100%;
+    padding: 8px;
+} 

@@ -1,0 +1,57 @@
+/* ===== GOOGLE FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+/* ===== BASE ===== */
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Mulish', sans-serif;
+    background-color: #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ===== CLASS CSS ===== */
+.btnripple{
+    background-color: royalblue;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 20px 30px;
+    border: none;
+    margin: 0 10px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.btnripple .circle{
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+
+    animation-name: myscale;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+}
+.btnripple:focus{
+    outline: none;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes myscale{
+    to{
+        transform: translate(-50%,-50%) scale(3);
+        opacity: 0;
+    }
+}

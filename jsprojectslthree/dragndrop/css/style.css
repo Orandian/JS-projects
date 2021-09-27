@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: sans-serif;
+    background-color: steelblue;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+}
+.empty{
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border: 3px solid #000;
+    margin: 10px;
+}
+.fill{
+    width: 145px;
+    height: 145px;
+    background-image: url("../img/paint.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
+.hold{
+    border: 5px solid #ccc;
+}
+.hovered{
+    background-color: #333;
+    border-color: #fff;
+    border-style: dashed;
+}
+@media (max-width: 800px){
+    body{
+        flex-direction: column;
+    }
+}

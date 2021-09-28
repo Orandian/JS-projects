@@ -23,7 +23,7 @@ function dragstart(){
 
 // ES6 can looping  objects-specific iterator value
 for(const empty of empties){
-    console.log(empty);
+    // console.log(empty);
     empty.addEventListener('dragover',dragover);
     empty.addEventListener('dragenter',dragenter);
     empty.addEventListener('dragleave',dragleave);

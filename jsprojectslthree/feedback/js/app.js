@@ -10,7 +10,6 @@ ratingcontainer.addEventListener('click',(e)=>{
     if(e.target.parentNode.classList.contains("rating")){
         removeactive();
         e.target.parentNode.classList.add("active");
-        // selectedrating = e.target.nextElementSibling.textContent;
         selectedrating = e.target.parentNode.lastElementChild.textContent;
     }else if(e.target.classList.contains('rating')){
         removeactive();

@@ -1,6 +1,6 @@
 :root{
     --primary-color: #000;
-    --seondary-color: #fff;
+    --secondary-color: #fff;
 }
 html.dark{
     --primary-color: #fff;
@@ -25,7 +25,7 @@ body{
 }
 .toggle{
     background-color: var(--primary-color);
-    color: var(--seondary-color);
+    color: var(--secondary-color);
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
@@ -58,16 +58,19 @@ body{
     transform-origin: bottom center;
 }
 .needle.hour{
-    transform: translate(-50%,-100%) rotate(0deg);
+    --rotation: 0;
+    transform: translate(-50%,-100%) rotate(calc(var(--rotation) * 1deg));
 }
 .needle.minute{
+    --rotation: 0;
     height: 100px;
-    transform: translate(-50%,-100%) rotate(45deg);
+    transform: translate(-50%,-100%) rotate(calc(var(--rotation) * 1deg));
 }
 .needle.second{
+    --rotation: 0;
     height: 100px;
     background-color: #ff0000;
-    transform: translate(-50%,-100%) rotate(90deg);
+    transform: translate(-50%,-100%) rotate(calc(var(--rotation) * 1deg));
 }
 .center-point{
     height: 10px;
@@ -89,4 +92,32 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+.time{
+    font-size: 60px;
+}
+.date{
+    color: #999;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+.date .circle{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+
+    /* Method 1
+    display: inline-flex;
+    justify-content: center;
+    align-items: center; */
+
+    /* Method 2 */
+    display: inline-block;
+    text-align: center;
+    line-height: 18px;
+
+    transition: all 0.5s ease-in;
 }

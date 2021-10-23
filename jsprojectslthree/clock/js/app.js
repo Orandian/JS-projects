@@ -68,9 +68,9 @@ function settime(){
     `
 }
 
-function setrotation(needle, rotation){
-    needle.style.setProperty('--rotation', rotation * 360);
-};
+// function setrotation(needle, rotation){
+//     needle.style.setProperty('--rotation', rotation * 360);
+// };
 
 const scale = (num, inmin, inmax, outmin, outmax)=>{
     return (num - inmin) * (outmax - outmin) / (inmax - inmin) + outmin;

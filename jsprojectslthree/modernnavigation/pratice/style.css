@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(
+        #ceebd1 50%,
+        #117ff5 0%
+    );
+    font-family: 'Mulish', sans-serif;
+    overflow: hidden;
+}
+nav{
+    width: 80px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s linear;
+}
+nav.active{
+    width: 350px;
+}
+nav ul{
+    width: 0%;
+    list-style: none;
+    display: flex;
+}
+nav.active ul{
+    width: 100%;
+}
+nav ul li{
+    opacity: 0;
+    transform: rotateY(0deg);
+    transition: all 0.6s linear;
+}
+nav.active ul li{
+    opacity: 1;
+    transform: rotateY(360deg);
+}
+nav ul li a{
+    text-decoration: none;
+    color: #000;
+    margin: 0 10px;
+}
+.icon{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+}
+.icon:focus{
+    outline: none;
+}
+.icon .line{
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    width: 20px;
+    height: 2px;
+    background: #117ff5;
+    transition: all 0.6s linear;
+}
+.icon .line2{
+    top: auto;
+    bottom: 10px;
+}
+nav.active .icon .line1{
+    transform: rotate(-765deg) translateY(5.5px);
+}
+nav.active .icon .line2{
+    transform: rotate(765deg) translateY(-5.5px);
+}

@@ -1,38 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Orbitron', sans-serif;
 }
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #333;
+  background: #000;
   overflow: hidden;
 }
 
-.wallE {
+.backgroundText {
   position: absolute;
-  bottom: 0;
-  left: -300px;
-  /* left: 0px; */
-  transition: 0.5s;
-  padding-right: 200px;
-  animation: move 2s linear infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+.backgroundText h1 {
+  font-size: 20rem;
+  letter-spacing: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  background-repeat: no-repeat;
+  background-size: 90%;
+  opacity: 0.1;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text 10s linear infinite;
   user-select: none;
 }
-@keyframes move {
+@keyframes text {
   0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(10px);
+    background-position: -1200%;
   }
   100% {
-    transform: translateX(0);
+    background-position: 1200%;
   }
+}
+.wallE {
+  position: absolute;
+  bottom: -10px;
+  left: -300px;
+  /* left: 0px; */
+  transition: 1s;
+  padding-right: 200px;
+  user-select: none;
 }
 .wallE .chatBox {
   position: absolute;
@@ -58,7 +80,7 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(10px);
+    transform: translateY(15px);
   }
   100% {
     transform: translateY(0);
@@ -71,4 +93,35 @@ body {
   padding: 10px;
   background: #fff;
   border-radius: 10px;
+}
+
+.snakeGame {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem;
+  background: #a2d2ff;
+  border-radius: 10px;
+  text-align: center;
+}
+.snakeGame .controls {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+.snakeGame .controls button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+}
+.snakeGame .controls button:focus {
+  outline: none;
+}
+.snakeGame .controls button:first-child {
+  background: #8ac926;
+}
+.snakeGame .controls button:nth-child(2) {
+  background: #ff595e;
 }

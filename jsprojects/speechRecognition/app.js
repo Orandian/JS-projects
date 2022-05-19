@@ -13,7 +13,7 @@ const recognition = new SpeechRecognition();
 recognition.interimResults = true;
 
 recognition.addEventListener('result', (e) => {
-  const text = Array.from(e.results)
+  var text = Array.from(e.results)
     .map((result) => result[0])
     .map((result) => result.transcript)
     .join('');
@@ -43,11 +43,14 @@ recognition.addEventListener('result', (e) => {
       chatE.innerHTML = 'why not I can';
       setTimeout(() => {
         chatE.innerHTML = 'EVE!!!';
+        // document.getElementById('eveSound').play();
 
         setTimeout(() => {
           document.getElementById('robot').style.bottom = '0';
-          chat.innerHTML = "What's up Human?";
-          jarvis = true;
+          var reply = 'Hello';
+          for (let i = 0; i < reply.length; i++) {
+            chat.innerHTML = reply[i].charCodeAt(0).toString(2) + ' ';
+          }
 
           setTimeout(() => {
             chatE.innerHTML =
@@ -56,15 +59,43 @@ recognition.addEventListener('result', (e) => {
             setTimeout(() => {
               chatE.innerHTML = 'May I translate for you';
               translate = true;
-            }, 4000);
-          }, 3000);
-        }, 2000);
-      }, 1000);
+            }, 5000);
+          }, 4000);
+        }, 3000);
+      }, 2000);
     }
   }
 
   if (translate) {
     chatE.innerHTML = text;
+
+    if (text.includes('change background')) {
+      var reply = 'Okay';
+      setTimeout(() => {
+        for (let i = 0; i < reply.length; i++) {
+          chat.innerHTML = reply[i].charCodeAt(0).toString(2) + ' ';
+        }
+      }, 1000);
+      var x = Math.floor(Math.random() * background.length);
+      body.style.background = `url(${background[x]})`;
+      body.style.backgroundSize = 'cover';
+      body.style.backgroundPosition = 'center';
+      body.style.backgroundRepeat = 'no-repeat';
+    }
+
+    // if (text.includes('can I play games')) {
+    //   var reply = 'Okay';
+    //   setTimeout(() => {
+    //     for (let i = 0; i < reply.length; i++) {
+    //       chat.innerHTML = reply[i].charCodeAt(0).toString(2) + ' ';
+    //     }
+    //   }, 1000);
+
+    //   document.getElementById('snakeGame').style.top = '50%';
+    //   document.getElementById('snakeGame').style.left = '50%';
+    //   document.getElementById('snakeGame').style.transform =
+    //     'translate(-50%,-50%)';
+    // }
   }
 
   // if (text.includes('hello Jarvis') || text.includes('Jarvis')) {
@@ -121,15 +152,6 @@ recognition.addEventListener('result', (e) => {
     jarvis = false;
   }
 
-  if (text.includes('change background')) {
-    chat.innerHTML = 'Okay!';
-    var x = Math.floor(Math.random() * background.length);
-    body.style.background = `url(${background[x]})`;
-    body.style.backgroundSize = 'cover';
-    body.style.backgroundPosition = 'center';
-    body.style.backgroundRepeat = 'no-repeat';
-  }
-
   // if (text.includes('move Center')) {
   //   chat.innerHTML = "Okay, I'm moving to the center";
   //   setTimeout(() => {
@@ -145,3 +167,150 @@ recognition.addEventListener('end', () => {
 });
 
 recognition.start();
+
+// ===================== SNAKE GAME =====================
+const boardBorder = 'black';
+const boardBackground = '#a2d2ff';
+const snakeColor = 'white';
+const snakeBorder = 'black';
+
+let snake = [
+  { x: 200, y: 200 },
+  { x: 190, y: 200 },
+  { x: 180, y: 200 },
+  { x: 170, y: 200 },
+  { x: 160, y: 200 },
+];
+
+let changingDirection = false;
+let foodX;
+let foodY;
+let dx = 10;
+let dy = 0;
+
+const snakeBoard = document.getElementById('snakeboard');
+const snakeBoard_ctx = snakeBoard.getContext('2d');
+
+generateFood();
+
+document.addEventListener('keydown', changeDirection);
+
+function main() {
+  if (gameEnd()) return;
+
+  changingDirection = false;
+  setTimeout(function start() {
+    clearBoard();
+    drawFood();
+    moveSnake();
+    drawSnake();
+    // if (snake.length == 6) {
+    //   snakeBoard_ctx.fillStyle = 'black';
+    //   snakeBoard_ctx.strokestyle = 'black';
+    //   snakeBoard_ctx.fillRect(10, 10, 10, 10);
+    //   snakeBoard_ctx.strokeRect(10, 10, 10, 10);
+    // }
+    main();
+  }, 100);
+}
+
+function again() {
+  snakeBoard_ctx.clearRect(0, 0, snakeBoard.width, snakeBoard.height);
+
+  main();
+}
+
+function clearBoard() {
+  snakeBoard_ctx.fillStyle = boardBackground;
+  snakeBoard_ctx.strokestyle = boardBorder;
+  snakeBoard_ctx.fillRect(0, 0, snakeBoard.width, snakeBoard.height);
+  snakeBoard_ctx.strokeRect(0, 0, snakeBoard.width, snakeBoard.height);
+}
+
+function drawSnake() {
+  snake.forEach(drawSnakePart);
+}
+
+function drawFood() {
+  snakeBoard_ctx.fillStyle = 'white';
+  snakeBoard_ctx.strokestyle = 'black';
+  snakeBoard_ctx.fillRect(foodX, foodY, 15, 15);
+  snakeBoard_ctx.strokeRect(foodX, foodY, 15, 15);
+}
+
+function drawSnakePart(snakePart) {
+  snakeBoard_ctx.fillStyle = snakeColor;
+  snakeBoard_ctx.strokestyle = snakeBorder;
+  snakeBoard_ctx.fillRect(snakePart.x, snakePart.y, 15, 15);
+  snakeBoard_ctx.strokeRect(snakePart.x, snakePart.y, 15, 15);
+}
+
+function gameEnd() {
+  for (let i = 4; i < snake.length; i++) {
+    if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true;
+  }
+  const hitLeftWall = snake[0].x < 0;
+  const hitRightWall = snake[0].x > snakeBoard.width - 20;
+  const hitToptWall = snake[0].y < 0;
+  const hitBottomWall = snake[0].y > snakeBoard.height - 20;
+  return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall;
+}
+
+function randomFood(min, max) {
+  return Math.round((Math.random() * (max - min) + min) / 10) * 10;
+}
+
+function generateFood() {
+  foodX = randomFood(0, snakeBoard.width - 20);
+  foodY = randomFood(0, snakeBoard.height - 20);
+  snake.forEach(function eatenFood(part) {
+    const eaten = part.x == foodX && part.y == foodY;
+    if (eaten) generateFood();
+  });
+}
+
+function changeDirection(event) {
+  const leftKey = 37;
+  const rightKey = 39;
+  const upKey = 38;
+  const downKey = 40;
+
+  if (changingDirection) return;
+  changingDirection = true;
+  const keyPressed = event.keyCode;
+  const goingUp = dy === -10;
+  const goingDown = dy === 10;
+  const goingRight = dx === 10;
+  const goingLeft = dx === -10;
+  if (keyPressed === leftKey && !goingRight) {
+    dx = -10;
+    dy = 0;
+  }
+  if (keyPressed === upKey && !goingDown) {
+    dx = 0;
+    dy = -10;
+  }
+  if (keyPressed === rightKey && !goingLeft) {
+    dx = 10;
+    dy = 0;
+  }
+  if (keyPressed === downKey && !goingUp) {
+    dx = 0;
+    dy = 10;
+  }
+}
+
+function moveSnake() {
+  const head = {
+    x: snake[0].x + dx,
+    y: snake[0].y + dy,
+  };
+
+  snake.unshift(head);
+  const eatenFood = snake[0].x === foodX && snake[0].y === foodY;
+  if (eatenFood) {
+    generateFood();
+  } else {
+    snake.pop();
+  }
+}

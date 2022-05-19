@@ -10,6 +10,10 @@
     <script src="./app.js" defer></script>
   </head>
   <body>
+    <div class="backgroundText">
+      <h1>WALL-E</h1>
+    </div>
+
     <div class="robot" id="robot">
       <div class="chatBox" id="chatBox">
         <p id="chat"></p>
@@ -23,5 +27,16 @@
       </div>
       <img src="./wallE.png" alt="robot" width="130px" />
     </div>
+
+    <div class="snakeGame" id="snakeGame">
+      <canvas id="snakeboard" width="300" height="300"></canvas>
+      <div class="controls">
+        <button onclick="main()">Start</button>
+        <button onclick="again()">Again!</button>
+      </div>
+    </div>
+
+    <!-- <audio src="./eve.mp3" id="eveSound"></audio>
+    <audio src="./wallE.mp3" id="wallESound"></audio> -->
   </body>
 </html>

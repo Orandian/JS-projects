@@ -20,6 +20,12 @@ recognition.addEventListener('result', (e) => {
 
   console.log(text);
 
+  if (text.includes('hello')) {
+    setTimeout(() => {
+      document.getElementById('assistant').style.top = '700px';
+    }, 2000);
+  }
+
   if (text.includes('anyone in here') || text.includes('anyone is here')) {
     document.getElementById('wallE').style.left = '0';
     chatE.innerHTML = "I'm here";
@@ -70,11 +76,8 @@ recognition.addEventListener('result', (e) => {
     chatE.innerHTML = text;
 
     if (text.includes('change background')) {
-      var reply = 'Okay';
       setTimeout(() => {
-        for (let i = 0; i < reply.length; i++) {
-          chat.innerHTML = reply[i].charCodeAt(0).toString(2) + ' ';
-        }
+        chat.innerHTML = 'Okay';
       }, 1000);
       var x = Math.floor(Math.random() * background.length);
       body.style.background = `url(${background[x]})`;
@@ -83,19 +86,24 @@ recognition.addEventListener('result', (e) => {
       body.style.backgroundRepeat = 'no-repeat';
     }
 
-    // if (text.includes('can I play games')) {
-    //   var reply = 'Okay';
-    //   setTimeout(() => {
-    //     for (let i = 0; i < reply.length; i++) {
-    //       chat.innerHTML = reply[i].charCodeAt(0).toString(2) + ' ';
-    //     }
-    //   }, 1000);
+    if (text.includes('can I play games')) {
+      setTimeout(() => {
+        chat.innerHTML = 'Wait a second';
+      }, 1000);
 
-    //   document.getElementById('snakeGame').style.top = '50%';
-    //   document.getElementById('snakeGame').style.left = '50%';
-    //   document.getElementById('snakeGame').style.transform =
-    //     'translate(-50%,-50%)';
-    // }
+      setTimeout(() => {
+        document.getElementById('snakeGame').style.top = '50%';
+        document.getElementById('snakeGame').style.left = '50%';
+        document.getElementById('snakeGame').style.transform =
+          'translate(-50%,-50%)';
+      }, 3000);
+    }
+
+    if (text.includes('stop game')) {
+      setTimeout(() => {
+        document.getElementById('snakeGame').style.top = '-500px';
+      }, 3000);
+    }
   }
 
   // if (text.includes('hello Jarvis') || text.includes('Jarvis')) {
@@ -217,7 +225,7 @@ function main() {
 function again() {
   snakeBoard_ctx.clearRect(0, 0, snakeBoard.width, snakeBoard.height);
 
-  main();
+  snakeBoard_ctx.restore();
 }
 
 function clearBoard() {

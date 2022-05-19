@@ -95,14 +95,46 @@ body {
   border-radius: 10px;
 }
 
+.assistant {
+  position: absolute;
+  top: 5rem;
+  transition: 2s;
+  animation: animate 2s linear infinite;
+  user-select: none;
+}
+@keyframes animate {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+/* .assistant .chatBox {
+  position: absolute;
+  top: -50px;
+  right: 100px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+} */
+
 .snakeGame {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 1rem;
+  top: -500px;
+  /* left: 50%;
+  transform: translateX(-50%); */
+  padding: 1rem 1.5rem;
   background: #a2d2ff;
   border-radius: 10px;
   text-align: center;
+  transition: 1s;
+}
+.snakeGame canvas {
+  margin-top: 1rem;
 }
 .snakeGame .controls {
   display: flex;

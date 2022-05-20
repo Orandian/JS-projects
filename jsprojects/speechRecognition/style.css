@@ -210,7 +210,7 @@ body {
   width: 100%;
   height: 4px;
   border-radius: 5px;
-  margin: 10px 0;
+  margin: 1.5rem 0;
   cursor: pointer;
 }
 .progressBox .progress {
@@ -221,22 +221,20 @@ body {
 }
 
 .controls {
+  width: 100%;
+  padding: 1rem 0;
+  background: #fff;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  padding: 1rem;
+  border-radius: 10px;
 }
 .controls .actionBtn {
-  margin: 0 20px;
-  padding: 15px;
   border: none;
-  color: #000;
-  background: transparent;
+  background: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
-.controls .actionBtn:focus {
-  outline: none;
-}
-.controls .actionBtnBig {
-  font-size: 30px;
+.controls .actionBtn.actionBtnBig {
+  font-size: 1.5rem;
 }

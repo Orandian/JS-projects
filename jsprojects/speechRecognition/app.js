@@ -1,5 +1,6 @@
 const chat = document.getElementById('chat');
 const chatE = document.getElementById('chatE');
+const chatA = document.getElementById('chatA');
 var jarvis = false;
 var wallE = false;
 var translate = false;
@@ -22,8 +23,8 @@ recognition.addEventListener('result', (e) => {
 
   if (text.includes('hello')) {
     setTimeout(() => {
-      document.getElementById('assistant').style.top = '700px';
-    }, 2000);
+      document.getElementById('assistant').style.top = '-300px';
+    }, 1000);
   }
 
   if (text.includes('anyone in here') || text.includes('anyone is here')) {
@@ -53,10 +54,11 @@ recognition.addEventListener('result', (e) => {
 
         setTimeout(() => {
           document.getElementById('robot').style.bottom = '0';
-          var reply = 'Hello';
-          for (let i = 0; i < reply.length; i++) {
-            chat.innerHTML = reply[i].charCodeAt(0).toString(2) + ' ';
-          }
+          // var reply = 'Hello';
+          // for (let i = 0; i < reply.length; i++) {
+          //   chat.innerHTML = reply[i].charCodeAt(0).toString(2) + ' ';
+          // }
+          chat.innerHTML = 'Hello Well-E';
 
           setTimeout(() => {
             chatE.innerHTML =
@@ -77,8 +79,16 @@ recognition.addEventListener('result', (e) => {
 
     if (text.includes('change background')) {
       setTimeout(() => {
-        chat.innerHTML = 'Okay';
+        chatE.innerHTML = text;
+
+        setTimeout(() => {
+          chatE.innerHTML = "It's look so beautiful";
+        }, 3000);
       }, 1000);
+
+      setTimeout(() => {
+        chat.innerHTML = 'Okay';
+      }, 2000);
       var x = Math.floor(Math.random() * background.length);
       body.style.background = `url(${background[x]})`;
       body.style.backgroundSize = 'cover';
@@ -97,6 +107,19 @@ recognition.addEventListener('result', (e) => {
         document.getElementById('snakeGame').style.transform =
           'translate(-50%,-50%)';
       }, 3000);
+    }
+    if (text.includes('how can I play')) {
+      setTimeout(() => {
+        chat.innerHTML = 'Talk with Jarvis';
+      }, 1000);
+
+      setTimeout(() => {
+        document.getElementById('assistant').style.top = '300px';
+
+        document.querySelector('.assistant .chatbox').style.visibility =
+          'visible';
+        chatA.innerHTML = 'How can I help you?';
+      }, 2000);
     }
 
     if (text.includes('stop game')) {

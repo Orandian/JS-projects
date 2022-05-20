@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Speech Recognition</title>
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="./app.js" defer></script>
   </head>
@@ -42,6 +48,32 @@
       <div class="controls">
         <button onclick="main()">Start</button>
         <button onclick="again()">Again!</button>
+      </div>
+    </div>
+
+    <div class="musicBox" id="musicBox">
+      <h1>Title</h1>
+
+      <div class="cover" id="cover">
+        <img src="./img/audio.jpg" alt="" />
+      </div>
+
+      <div class="progressBox" id="progressBox">
+        <div class="progress" id="progress"></div>
+      </div>
+
+      <div class="controls">
+        <button id="prev" class="actionBtn">
+          <i class="fas fa-backward"></i>
+        </button>
+
+        <button id="play" class="actionBtn actionBtnBig">
+          <i class="fas fa-play"></i>
+        </button>
+
+        <button id="next" class="actionBtn">
+          <i class="fas fa-forward"></i>
+        </button>
       </div>
     </div>
 

@@ -235,20 +235,21 @@ function main() {
     drawFood();
     moveSnake();
     drawSnake();
-    // if (snake.length == 6) {
-    //   snakeBoard_ctx.fillStyle = 'black';
-    //   snakeBoard_ctx.strokestyle = 'black';
-    //   snakeBoard_ctx.fillRect(10, 10, 10, 10);
-    //   snakeBoard_ctx.strokeRect(10, 10, 10, 10);
-    // }
     main();
   }, 100);
 }
 
 function again() {
-  snakeBoard_ctx.clearRect(0, 0, snakeBoard.width, snakeBoard.height);
-
-  snakeBoard_ctx.restore();
+  snake = [
+    { x: 200, y: 200 },
+    { x: 190, y: 200 },
+    { x: 180, y: 200 },
+    { x: 170, y: 200 },
+    { x: 160, y: 200 },
+  ];
+  dy = 10;
+  dx = 0;
+  main();
 }
 
 function clearBoard() {
@@ -284,7 +285,7 @@ function gameEnd() {
   const hitRightWall = snake[0].x > snakeBoard.width - 20;
   const hitToptWall = snake[0].y < 0;
   const hitBottomWall = snake[0].y > snakeBoard.height - 20;
-  return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall;
+  if (hitLeftWall || hitRightWall || hitToptWall || hitBottomWall) return true;
 }
 
 function randomFood(min, max) {

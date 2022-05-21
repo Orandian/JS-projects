@@ -126,7 +126,7 @@ body {
 
 .snakeGame {
   position: absolute;
-  top: -500px;
+  top: 100px;
   /* left: 50%;
   transform: translateX(-50%); */
   padding: 1rem 1.5rem;

@@ -4,18 +4,22 @@ let number = 0;
 const videos = [
   {
     name: 'You are my Sunshine',
+    poster: './img/youaremysunshine.jpg',
     src: './video/youaremysunshine.mp4',
   },
   {
     name: 'Your Name',
+    poster: './img/yourname.jpg',
     src: './video/yourname.mp4',
   },
   {
     name: 'Believer',
+    poster: './img/believer.jpg',
     src: './video/believer.mp4',
   },
   {
     name: 'Country Roads',
+    poster: './img/countryroad.jpg',
     src: './video/countryroads.mp4',
   },
 ];
@@ -30,22 +34,20 @@ function play() {
 
 function next() {
   number++;
-  //   const randomNumber = Math.floor(Math.random() * videos.length);
   if (number == 4) {
     number = 0;
   }
 
   video.src = videos[number].src;
-  video.autoplay = true;
+  video.poster = videos[number].poster;
 }
 
 function prev() {
   number--;
-  //   const randomNumber = Math.floor(Math.random() * videos.length);
   if (number == -1) {
     number = 3;
   }
 
   video.src = videos[number].src;
-  video.autoplay = true;
+  video.poster = videos[number].poster;
 }

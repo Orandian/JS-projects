@@ -17,30 +17,46 @@
   </head>
   <body>
     <div class="backgroundText">
-      <h1>WALL-E</h1>
+      <h1>JARVIS</h1>
     </div>
+
+    <!-- <div class="robot" id="robot">
+      <div class="chatBox" id="chatBox">
+        <p id="chat"></p>
+      </div>
+      <img src="./eve.png" alt="robot" width="130px" />
+    </div> -->
+
+    <!-- <div class="wallE" id="wallE">
+      <div class="chatBox" id="chatBox">
+        <p id="chatE"></p>
+      </div>
+      <img src="./wallE.png" alt="robot" width="130px" />
+    </div> -->
 
     <div class="robot" id="robot">
       <div class="chatBox" id="chatBox">
         <p id="chat"></p>
       </div>
-      <img src="./eve.png" alt="robot" width="130px" />
-    </div>
-
-    <div class="wallE" id="wallE">
-      <div class="chatBox" id="chatBox">
-        <p id="chatE"></p>
-      </div>
-      <img src="./wallE.png" alt="robot" width="130px" />
-    </div>
-
-    <div class="assistant" id="assistant">
-      <div class="chatBox" id="chatBox">
-        <p id="chatA"></p>
-      </div>
       <img src="./robot.png" alt="robot" width="130px" />
     </div>
 
+    <!-- ====================== START CONFIRM ======================= -->
+    <div class="confirmBox" id="confirmBox">
+      <h1>Do you agree,</h1>
+      <p>Jarvis is your webpage's assistant?</p>
+      <div class="confirm">
+        <button onclick="agree()">Agree</button>
+        <button onclick="notagree()">Not Agree</button>
+      </div>
+    </div>
+
+    <div class="agreeBox" id="agreeBox">
+      <h1>404</h1>
+      <p>Your webpage not found</p>
+    </div>
+
+    <!-- ====================== START SNAKE GAME ======================= -->
     <div class="snakeGame" id="snakeGame">
       <h1>Have Fun!</h1>
       <p>(you can play one time)</p>
@@ -50,12 +66,14 @@
         <button onclick="again()">Again!</button>
       </div>
     </div>
+    <!-- ====================== END SNAKE GAME ======================= -->
 
-    <!-- <div class="musicBox" id="musicBox">
-      <h1>Title</h1>
+    <!-- ====================== START MUSIC BOX ======================= -->
+    <div class="musicBox" id="musicBox">
+      <h1 id="title">You are my Sunshine</h1>
 
       <div class="cover" id="cover">
-        <img src="./img/audio.jpg" alt="" />
+        <img src="./img/youaremysunshine.jpg" alt="" id="coverImg" />
       </div>
 
       <div class="progressBox" id="progressBox">
@@ -63,19 +81,27 @@
       </div>
 
       <div class="controls">
-        <button id="prev" class="actionBtn">
+        <button id="prev" class="actionBtn" onclick="prev()">
           <i class="fas fa-backward"></i>
         </button>
 
-        <button id="play" class="actionBtn actionBtnBig">
+        <button id="play" class="actionBtn actionBtnBig" onclick="play(this)">
           <i class="fas fa-play"></i>
         </button>
 
-        <button id="next" class="actionBtn">
+        <button id="next" class="actionBtn" onclick="next()">
           <i class="fas fa-forward"></i>
         </button>
       </div>
-    </div> -->
+    </div>
+
+    <video
+      src="./video/youaremysunshine.mp4"
+      type="text/mp4"
+      id="video"
+      poster="./img/youaremysunshine.jpg"
+    ></video>
+    <!-- ====================== END MUSIC BOX ======================= -->
 
     <!-- <audio src="./eve.mp3" id="eveSound"></audio>
     <audio src="./wallE.mp3" id="wallESound"></audio> -->

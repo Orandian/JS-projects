@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap'); */
 
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -13,9 +13,9 @@ body {
   min-height: 100vh;
   background: #000;
   overflow: hidden;
-}
+} */
 
-.backgroundText {
+/* .backgroundText {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -46,12 +46,12 @@ body {
   100% {
     background-position: 1200%;
   }
-}
+} */
 
-.robot {
+/* .robot {
   position: absolute;
   bottom: -300px;
-  /* bottom: 0; */
+  bottom: 0;
   right: 0;
   padding-left: 200px;
   transition: 0.5s;
@@ -77,12 +77,12 @@ body {
   background: #fff;
   border-radius: 10px;
   display: inline-block;
-}
+} */
 
 /* ========================= AGREE BOX ====================== */
-.confirmBox {
+/* .confirmBox {
   position: absolute;
-  /* top: 3rem; */
+  top: 3rem;
   top: -10rem;
   padding: 1rem 2rem;
   background: #a2d2ff;
@@ -113,8 +113,8 @@ body {
 }
 .confirmBox .confirm button:last-child {
   background: #f00;
-}
-.agreeBox {
+} */
+/* .agreeBox {
   position: absolute;
   top: 0;
   left: 0;
@@ -137,14 +137,14 @@ body {
 .agreeBox p {
   font-size: 2rem;
   color: #fff;
-}
+} */
 
 /* ========================= SNAKE GAME ========================= */
-.snakeGame {
+/* .snakeGame {
   position: absolute;
   top: -500px;
-  /* left: 50%;
-  transform: translateX(-50%); */
+  left: 50%;
+  transform: translateX(-50%);
   padding: 1rem 1.5rem;
   background: #a2d2ff;
   border-radius: 10px;
@@ -174,10 +174,10 @@ body {
 }
 .snakeGame .controls button:nth-child(2) {
   background: #ff595e;
-}
+} */
 
 /* ====================== MUSIC BOX ==================== */
-.musicBox {
+/* .musicBox {
   position: absolute;
   top: -800px;
   width: 300px;
@@ -268,6 +268,6 @@ video {
   left: 0;
   right: 0;
   top: -800px;
-  /* bottom: 0; */
+  bottom: 0;
   z-index: -1;
-}
+} */

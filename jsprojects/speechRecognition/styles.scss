@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+/* Config */
+$color-bg: #000;
+$color-particle: #fff;
+$spacing: 2560px;
+$time-1: 60s;
+$time-2: 120s;
+$time-3: 180s;
+$time-4: 200s;
+
+/* Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: $color-bg;
+  overflow: hidden;
+}
+
+/* mixins */
+@function particles($max) {
+  $val: 0px 0px $color-particle;
+  @for $i from 1 through $max {
+    $val: #{$val}, random($spacing) + px random($spacing) + px $color-particle;
+  }
+  @return $val;
+}
+
+@mixin particles($max) {
+  box-shadow: particles($max);
+  border-radius: 50%;
+}
+
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.particle,
+.particle:after {
+  background: transparent;
+}
+
+.particle:after {
+  content: '';
+  position: absolute;
+  top: $spacing;
+}
+
+.particle1 {
+  width: 2px;
+  height: 2px;
+  @include particles(1000);
+  animation: animParticle $time-1 linear infinite;
+}
+
+.particle1:after {
+  width: 2px;
+  height: 2px;
+  @include particles(900);
+}
+
+.particle2 {
+  width: 2px;
+  height: 2px;
+  @include particles(800);
+  animation: animParticle $time-2 linear infinite;
+}
+
+.particle2:after {
+  width: 3px;
+  height: 3px;
+  @include particles(500);
+}
+
+.particle3:after {
+  width: 3px;
+  height: 3px;
+  @include particles(1100);
+  border-radius: 50%;
+}
+
+.particle4 {
+  width: 1px;
+  height: 1px;
+  @include particles(1200);
+  animation: animParticle $time-4 linear infinite;
+}
+
+.particle4:after {
+  width: 1px;
+  height: 1px;
+  @include particles(700);
+}
+
+@keyframes animParticle {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY($spacing * -1);
+  }
+}
+
+.backgroundText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  h1 {
+    font-size: 20rem;
+    letter-spacing: 4px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.5),
+      transparent
+    );
+    background-repeat: no-repeat;
+    background-size: 90%;
+    opacity: 0.1;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text 10s linear infinite;
+    user-select: none;
+  }
+  @keyframes text {
+    0% {
+      background-position: -1200%;
+    }
+    100% {
+      background-position: 1200%;
+    }
+  }
+}
+
+.robot {
+  position: absolute;
+  bottom: -300px;
+  // bottom: 0;
+  right: 0;
+  padding-left: 200px;
+  transition: 0.5s;
+  animation: animate 2s linear infinite;
+  user-select: none;
+
+  @keyframes animate {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(15px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  .chatBox {
+    position: absolute;
+    top: -50px;
+    right: 100px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+    display: inline-block;
+  }
+}
+
+// ================== AGREE BOX ===================
+.confirmBox {
+  position: absolute;
+  //   top: 3rem;
+  top: -10rem;
+  padding: 1rem 2rem;
+  background: #a2d2ff;
+  text-align: center;
+  border-radius: 5px;
+  transition: 0.5s;
+  h1 {
+    margin-bottom: 1rem;
+  }
+  .confirm {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+
+    button {
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+
+      &:focus {
+        outline: none;
+      }
+      &:first-child {
+        background: #8ac926;
+      }
+      &:last-child {
+        background: #f00;
+      }
+    }
+  }
+}
+.agreeBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #000;
+  z-index: -100;
+  visibility: hidden;
+  user-select: none;
+
+  h1 {
+    font-size: 10rem;
+    letter-spacing: 50px;
+    color: #f00;
+  }
+  p {
+    font-size: 2rem;
+    color: #fff;
+  }
+}
+
+// ====================== SNAKE GAME ==================
+.snakeGame {
+  position: absolute;
+  top: -500px;
+  //   top: 3rem;
+  padding: 1rem 1.5rem;
+  background: #a2d2ff;
+  border-radius: 10px;
+  text-align: center;
+  transition: 1s;
+  canvas {
+    margin-top: 1rem;
+  }
+  .controls {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #fff;
+      &:focus {
+        outline: none;
+      }
+      &:first-child {
+        background: #8ac926;
+      }
+      &:nth-child(2) {
+        background: #ff595e;
+      }
+    }
+  }
+}
+
+// ======================= MUSIC BOX ===================
+.musicBox {
+  position: absolute;
+  top: -800px;
+  //   top: 3rem;
+  width: 300px;
+  color: #fff;
+  text-align: center;
+  background: #a2d2ff;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  .cover {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    margin: 1rem 0;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      animation: rotate 3s linear infinite;
+      animation-play-state: paused;
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #a2d2ff;
+      z-index: 10;
+    }
+  }
+}
+.progressBox {
+  background-color: #fff;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  margin: 2rem 0;
+  cursor: pointer;
+  .progress {
+    background: #000;
+    width: 0%;
+    height: 100%;
+    border-radius: 5px;
+  }
+}
+.controls {
+  width: 100%;
+  padding: 1rem 0;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  .actionBtn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 3;
+    &.actionBtnBig {
+      font-size: 1.5rem;
+    }
+  }
+}
+video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -800px;
+  /* bottom: 0; */
+  z-index: -1;
+}

@@ -281,13 +281,14 @@ body {
 .musicBox {
   position: absolute;
   top: -800px;
-  //   top: 3rem;
+  // top: 3rem;
   width: 300px;
   color: #fff;
   text-align: center;
   background: #a2d2ff;
   padding: 1rem 2rem;
   border-radius: 10px;
+  transition: 1s;
   .cover {
     position: relative;
     left: 50%;
@@ -322,6 +323,13 @@ body {
       border-radius: 50%;
       background: #a2d2ff;
       z-index: 10;
+    }
+  }
+  &.active {
+    .cover {
+      img {
+        animation-play-state: running;
+      }
     }
   }
 }

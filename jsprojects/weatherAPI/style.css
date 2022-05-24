@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+  background: #111;
+}
+
+h1,
+h3 {
+  font-weight: 400;
+}
+
+.weatherApp {
+  min-height: 100vh;
+  background-image: url(./images/day/greycloud.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  position: relative;
+  -webkit-transition: 500ms;
+  transition: 500ms;
+  opacity: 1;
+}
+
+.weatherApp::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+.weatherApp .container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 2em 3em 4em 3em;
+}
+
+.weatherApp .container > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weatherApp .container > div .temp {
+  font-size: 7em;
+  margin: 0;
+}
+
+.weatherApp .container > div .cityTime h1 {
+  margin: 0;
+  margin-bottom: 0.2em;
+  font-size: 3em;
+}
+
+.weatherApp .container > div .weather img {
+  display: block;
+  margin: 0.5em 0;
+}
+
+.weatherApp .panel {
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: rgba(110, 110, 110, 0.25);
+  -webkit-box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 1;
+  padding: 3em 2em;
+  overflow-y: scroll;
+}
+
+.weatherApp .panel form {
+  margin-bottom: 3em;
+}
+
+.weatherApp .panel form .search {
+  background: none;
+  border: none;
+  border-bottom: 1px #ccc solid;
+  padding: 0 1em 0.5em 0;
+  width: 80%;
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.weatherApp .panel form .search:focus {
+  outline: none;
+}
+
+.weatherApp .panel form .search::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+.weatherApp .panel form .search:-ms-input-placeholder {
+  color: #ccc;
+}
+
+.weatherApp .panel form .search::-ms-input-placeholder {
+  color: #ccc;
+}
+
+.weatherApp .panel form .search::placeholder {
+  color: #ccc;
+}
+
+.weatherApp .panel form .submit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1.5em;
+  margin: 0;
+  border: none;
+  outline: none;
+  background: #fa6d1b;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2em;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.weatherApp .panel form .submit:hover {
+  background: #fff !important;
+  color: #000;
+}
+
+.weatherApp .panel ul {
+  padding: 0 0 1em 0;
+  margin: 2em 0;
+  border-bottom: 1px #ccc solid;
+}
+
+.weatherApp .panel ul li {
+  color: #ccc;
+  margin: 2.5em 0;
+}
+
+.weatherApp .panel ul .city {
+  display: block;
+  cursor: pointer;
+}
+
+.weatherApp .panel ul .city:hover {
+  color: #fff;
+}
+
+.weatherApp .panel ul h4 {
+  margin: 3em 0;
+}
+
+.weatherApp .panel .details li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cityTime,
+.temp,
+.weather {
+  margin: 0 1em;
+}
+/*# sourceMappingURL=style.css.map */

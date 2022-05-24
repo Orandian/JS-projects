@@ -10,9 +10,24 @@ var move = false;
 var todo = false;
 var startGame = false;
 var startVideo = false;
+var agreefun = false;
 var body = document.body;
-let index = 0;
-var background = ['./bg1.jpg', './bg2.jpg', './bg3.jpg', './bg4.jpg'];
+
+var year = new Date().getFullYear();
+var month = new Date().getMonth();
+var day = new Date().getDay();
+var today = new Date().getDate();
+var hour = new Date().getHours();
+var mins = new Date().getMinutes();
+var days = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
 
 window.SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -47,23 +62,55 @@ recognition.addEventListener('result', (e) => {
       text.includes('may I know your name')
     ) {
       setTimeout(() => {
-        chat.innerHTML = "My name is Jarvis, your webpage's assistant!";
+        chat.innerHTML = `My name is <span style="color: #f00;">JARVIS</span>, your webpage's assistant!`;
 
         setTimeout(() => {
+          agreefun = true;
           chat.innerHTML = 'Agree or Not agree?';
           confirmBox.style.top = '3rem';
         }, 3000);
       }, 1000);
     }
-    if (text.includes('change background')) {
+
+    if (
+      text.includes('what day is it') ||
+      text.includes('what day') ||
+      text.includes('day')
+    ) {
+      setTimeout(() => {
+        chat.innerHTML = `Today is <span style="color: #f00;">${days[day]}</span>`;
+      }, 1000);
+    }
+
+    if (
+      text.includes('what time is it') ||
+      text.includes('what time') ||
+      text.includes('time')
+    ) {
+      setTimeout(() => {
+        chat.innerHTML = `<span style="color: #f00;">${
+          hour > 12 ? hour - 12 : hour
+        }</span> hour <span style="color: #f00;">${mins}</span> minutes`;
+      }, 1000);
+    }
+
+    if (agreefun) {
+      if (text.includes('agree') || text.includes('agreed')) {
+        agree();
+      }
+      if (text.includes('not agree') || text.includes('not agreed')) {
+        notagree();
+      }
+    }
+
+    if (text.includes('change background') || text.includes('background')) {
       setTimeout(() => {
         chat.innerHTML = "Okay, I'll change";
         setTimeout(() => {
-          index++;
-          if (index == 4) {
-            index = 0;
-          }
-          body.style.background = `url(${background[index]})`;
+          var random = Math.floor(
+            Math.random() * (495281 - 492673 + 1) + 492673
+          );
+          body.style.background = `url(https://source.unsplash.com/collection/${random}/1900x900)`;
           body.style.backgroundSize = 'cover';
           body.style.backgroundPosition = 'center';
           body.style.backgroundRepeat = 'no-repeat';
@@ -162,6 +209,16 @@ recognition.addEventListener('result', (e) => {
         }, 1000);
       }
       if (startGame) {
+        if (
+          text.includes('start the game') ||
+          text.includes('start game') ||
+          text.includes('start')
+        ) {
+          main();
+        }
+        if (text == 'again' || text == 'play again') {
+          again();
+        }
         if (text.includes('stop game') || text.includes('close game')) {
           chat.innerHTML = 'Okay';
           setTimeout(() => {
@@ -233,168 +290,6 @@ recognition.addEventListener('result', (e) => {
       }
     }
   }
-
-  // if (text.includes('hello')) {
-  //   setTimeout(() => {
-  //     document.getElementById('assistant').style.top = '-300px';
-  //   }, 1000);
-  // }
-
-  // if (text.includes('anyone in here') || text.includes('anyone is here')) {
-  //   document.getElementById('wallE').style.left = '0';
-  //   chatE.innerHTML = "I'm here";
-  //   wallE = true;
-  // }
-
-  // if (wallE) {
-  //   if (text.includes('who are you') || text.includes('what is your name')) {
-  //     chatE.innerHTML = 'My name is Wall-E';
-  //   }
-  //   if (text.includes('what are you doing')) {
-  //     chatE.innerHTML = "I'm here to help you";
-  //   }
-  //   if (text.includes('can you control this webpage')) {
-  //     chatE.innerHTML = 'No';
-  //     setTimeout(() => {
-  //       chatE.innerHTML = 'but EVE can control';
-  //     }, 2000);
-  //   }
-  //   if (text.includes('can you call her here')) {
-  //     chatE.innerHTML = 'why not I can';
-  //     setTimeout(() => {
-  //       chatE.innerHTML = 'EVE!!!';
-  //       // document.getElementById('eveSound').play();
-
-  //       setTimeout(() => {
-  //         document.getElementById('robot').style.bottom = '0';
-  //         // var reply = 'Hello';
-  //         // for (let i = 0; i < reply.length; i++) {
-  //         //   chat.innerHTML = reply[i].charCodeAt(0).toString(2) + ' ';
-  //         // }
-  //         chat.innerHTML = 'Hello Well-E';
-
-  //         setTimeout(() => {
-  //           chatE.innerHTML =
-  //             "but EVE can't understand your human language because she's a robot";
-
-  //           setTimeout(() => {
-  //             chatE.innerHTML = 'May I translate for you';
-  //             translate = true;
-  //           }, 5000);
-  //         }, 4000);
-  //       }, 3000);
-  //     }, 2000);
-  //   }
-  // }
-
-  // if (translate) {
-  //   chatE.innerHTML = text;
-
-  //   if (text.includes('change background')) {
-  //     setTimeout(() => {
-  //       chatE.innerHTML = text;
-
-  //       setTimeout(() => {
-  //         chatE.innerHTML = "It's look so beautiful";
-  //       }, 3000);
-  //     }, 1000);
-
-  //     setTimeout(() => {
-  //       chat.innerHTML = 'Okay';
-  //     }, 2000);
-  //     var x = Math.floor(Math.random() * background.length);
-  //     body.style.background = `url(${background[x]})`;
-  //     body.style.backgroundSize = 'cover';
-  //     body.style.backgroundPosition = 'center';
-  //     body.style.backgroundRepeat = 'no-repeat';
-  //   }
-
-  //   if (text.includes('can I play games')) {
-  //     setTimeout(() => {
-  //       chat.innerHTML = 'Wait a second';
-  //     }, 1000);
-
-  //     setTimeout(() => {
-  //       document.getElementById('snakeGame').style.top = '50%';
-  //       document.getElementById('snakeGame').style.left = '50%';
-  //       document.getElementById('snakeGame').style.transform =
-  //         'translate(-50%,-50%)';
-  //     }, 3000);
-  //   }
-  //   if (text.includes('how can I play')) {
-  //     setTimeout(() => {
-  //       chat.innerHTML = 'Talk with Jarvis';
-  //     }, 1000);
-
-  //     setTimeout(() => {
-  //       document.getElementById('assistant').style.top = '300px';
-
-  //       document.querySelector('.assistant .chatbox').style.visibility =
-  //         'visible';
-  //       chatA.innerHTML = 'How can I help you?';
-  //     }, 2000);
-  //   }
-
-  //   if (text.includes('stop game')) {
-  //     setTimeout(() => {
-  //       document.getElementById('snakeGame').style.top = '-500px';
-  //     }, 3000);
-  //   }
-  // }
-
-  // if (text.includes('hello Jarvis') || text.includes('Jarvis')) {
-  //   document.getElementById('robot').style.bottom = '0';
-  //   chat.innerHTML = "What's up Human?";
-  //   jarvis = true;
-  // }
-  // if (jarvis) {
-  //   if (text.includes('who are you') || text.includes('what is your name')) {
-  //     chat.innerHTML = "I'm Jarvis";
-  //   }
-  //   if (text.includes('what are you doing')) {
-  //     chat.innerHTML = "I'm here to help you";
-  //   }
-  //   if (text.includes('can you sing a song')) {
-  //     chat.innerHTML = 'No';
-  //     // open robotic voice
-  //   }
-  //   if (text.includes('do you have a girlfriend')) {
-  //     chat.innerHTML = 'No';
-  //   }
-  //   if (text.includes('are you a gay')) {
-  //     chat.innerHTML = "I don't have gender because I'm a robot";
-  //   }
-  //   if (text.includes('are you lonely')) {
-  //     chat.innerHTML =
-  //       "I'm not but I think you are asking because you're lonely";
-  //   }
-  //   if (text.includes('why do you understand me')) {
-  //     chat.innerHTML = 'I just translate your language in zeros and ones';
-  //   }
-  //   if (text.includes('do you know Siri')) {
-  //     chat.innerHTML = "Of course, she's my crush";
-  //     setTimeout(() => {
-  //       chat.innerHTML = 'Make sure to let me know if you met her';
-  //     }, 3000);
-  //   }
-  //   if (text.includes('can you fly')) {
-  //     chat.innerHTML = "I can't but, do you know what I can do?";
-  //     setTimeout(() => {
-  //       chat.innerHTML = 'I can command drones to fly for me';
-  //     }, 3000);
-  //   }
-  //   if (text.includes('which do you recommend Android or iPhone')) {
-  //     chat.innerHTML =
-  //       'Neither of them because keypads are the best smart phones ever';
-  //   }
-
-  // if (text.includes('close Jarvis') || text.includes('close')) {
-  //   chat.innerHTML = 'bye bye';
-  //   setTimeout(() => {
-  //     document.getElementById('robot').style.bottom = '-300px';
-  //   }, 1500);
-  //   jarvis = false;
-  // }
 });
 
 recognition.addEventListener('end', () => {
@@ -411,6 +306,7 @@ function agree() {
       chat.innerHTML = 'What you wanna do?';
 
       todo = true;
+      agreefun = false;
     }, 2000);
   }, 1000);
 }
@@ -425,6 +321,8 @@ function notagree() {
     setTimeout(() => {
       agreeBox.style.visibility = 'visible';
       agreeBox.style.zIndex = '100';
+
+      agreefun = false;
     }, 2000);
   }, 1000);
 }
@@ -448,6 +346,8 @@ let foodX;
 let foodY;
 let dx = 10;
 let dy = 0;
+let speed = 100;
+let point = 0;
 
 const snakeBoard = document.getElementById('snakeboard');
 const snakeBoard_ctx = snakeBoard.getContext('2d');
@@ -457,7 +357,11 @@ generateFood();
 document.addEventListener('keydown', changeDirection);
 
 function main() {
-  if (gameEnd()) return;
+  chat.innerHTML = `Your score is ${point}`;
+  if (gameEnd()) {
+    chat.innerHTML = 'GAMEOVER!';
+    return;
+  }
 
   changingDirection = false;
   setTimeout(function start() {
@@ -465,11 +369,41 @@ function main() {
     drawFood();
     moveSnake();
     drawSnake();
+    if (snake.length == 6) {
+      speed = 90;
+    }
+    if (snake.length == 7) {
+      speed = 80;
+    }
+    if (snake.length == 8) {
+      speed = 70;
+    }
+    if (snake.length == 9) {
+      speed = 60;
+    }
+    if (snake.length == 10) {
+      speed = 50;
+    }
+    if (snake.length == 11) {
+      speed = 40;
+    }
+    if (snake.length == 12) {
+      speed = 30;
+    }
+    if (snake.length == 13) {
+      speed = 20;
+    }
+    if (snake.length == 14) {
+      speed = 10;
+    }
     main();
-  }, 100);
+  }, speed);
 }
 
 function again() {
+  speed = 100;
+  point = 0;
+  chat.innerHTML = `Your score is ${point}`;
   snake = [
     { x: 200, y: 200 },
     { x: 190, y: 200 },
@@ -496,15 +430,15 @@ function drawSnake() {
 function drawFood() {
   snakeBoard_ctx.fillStyle = 'white';
   snakeBoard_ctx.strokestyle = 'black';
-  snakeBoard_ctx.fillRect(foodX, foodY, 15, 15);
-  snakeBoard_ctx.strokeRect(foodX, foodY, 15, 15);
+  snakeBoard_ctx.fillRect(foodX, foodY, 20, 20);
+  snakeBoard_ctx.strokeRect(foodX, foodY, 20, 20);
 }
 
 function drawSnakePart(snakePart) {
   snakeBoard_ctx.fillStyle = snakeColor;
   snakeBoard_ctx.strokestyle = snakeBorder;
-  snakeBoard_ctx.fillRect(snakePart.x, snakePart.y, 15, 15);
-  snakeBoard_ctx.strokeRect(snakePart.x, snakePart.y, 15, 15);
+  snakeBoard_ctx.fillRect(snakePart.x, snakePart.y, 20, 20);
+  snakeBoard_ctx.strokeRect(snakePart.x, snakePart.y, 20, 20);
 }
 
 function gameEnd() {
@@ -571,6 +505,8 @@ function moveSnake() {
   snake.unshift(head);
   const eatenFood = snake[0].x === foodX && snake[0].y === foodY;
   if (eatenFood) {
+    point += 10;
+    chat.innerHTML = `Your score is ${point}`;
     generateFood();
   } else {
     snake.pop();
@@ -579,6 +515,7 @@ function moveSnake() {
 
 // ========================= MUSIC BOX =========================
 let title = document.getElementById('title');
+let progressBox = document.getElementById('progressBox');
 let progress = document.getElementById('progress');
 let coverImg = document.getElementById('coverImg');
 let number = 0;
@@ -609,16 +546,19 @@ const videos = [
 function play(e) {
   if (video.paused) {
     musicBox.classList.add('active');
+    musicBox.style.background = 'transparent';
     video.play();
     e.innerHTML = `<i class="fas fa-pause"></i>`;
   } else {
     musicBox.classList.remove('active');
+    musicBox.style.background = '#a2d2ff';
     video.pause();
     e.innerHTML = `<i class="fas fa-play"></i>`;
   }
 }
 
 function next() {
+  musicBox.style.background = '#a2d2ff';
   document.getElementById('play').innerHTML = `<i class="fas fa-play"></i>`;
   musicBox.classList.remove('active');
   number++;
@@ -633,6 +573,7 @@ function next() {
 }
 
 function prev() {
+  musicBox.style.background = '#a2d2ff';
   musicBox.classList.remove('active');
   document.getElementById('play').innerHTML = `<i class="fas fa-play"></i>`;
   number--;
@@ -653,4 +594,175 @@ function updateprogress(e) {
   progress.style.width = `${progresspercent}%`;
 }
 
+function setProgress(e) {
+  const width = this.clientWidth;
+  const clickx = e.offsetX;
+  const duration = video.duration;
+
+  video.currentTime = (clickx / width) * duration;
+}
+
 video.addEventListener('timeupdate', updateprogress);
+progressBox.addEventListener('click', setProgress);
+
+// if (text.includes('hello')) {
+//   setTimeout(() => {
+//     document.getElementById('assistant').style.top = '-300px';
+//   }, 1000);
+// }
+
+// if (text.includes('anyone in here') || text.includes('anyone is here')) {
+//   document.getElementById('wallE').style.left = '0';
+//   chatE.innerHTML = "I'm here";
+//   wallE = true;
+// }
+
+// if (wallE) {
+//   if (text.includes('who are you') || text.includes('what is your name')) {
+//     chatE.innerHTML = 'My name is Wall-E';
+//   }
+//   if (text.includes('what are you doing')) {
+//     chatE.innerHTML = "I'm here to help you";
+//   }
+//   if (text.includes('can you control this webpage')) {
+//     chatE.innerHTML = 'No';
+//     setTimeout(() => {
+//       chatE.innerHTML = 'but EVE can control';
+//     }, 2000);
+//   }
+//   if (text.includes('can you call her here')) {
+//     chatE.innerHTML = 'why not I can';
+//     setTimeout(() => {
+//       chatE.innerHTML = 'EVE!!!';
+//       // document.getElementById('eveSound').play();
+
+//       setTimeout(() => {
+//         document.getElementById('robot').style.bottom = '0';
+//         // var reply = 'Hello';
+//         // for (let i = 0; i < reply.length; i++) {
+//         //   chat.innerHTML = reply[i].charCodeAt(0).toString(2) + ' ';
+//         // }
+//         chat.innerHTML = 'Hello Well-E';
+
+//         setTimeout(() => {
+//           chatE.innerHTML =
+//             "but EVE can't understand your human language because she's a robot";
+
+//           setTimeout(() => {
+//             chatE.innerHTML = 'May I translate for you';
+//             translate = true;
+//           }, 5000);
+//         }, 4000);
+//       }, 3000);
+//     }, 2000);
+//   }
+// }
+
+// if (translate) {
+//   chatE.innerHTML = text;
+
+//   if (text.includes('change background')) {
+//     setTimeout(() => {
+//       chatE.innerHTML = text;
+
+//       setTimeout(() => {
+//         chatE.innerHTML = "It's look so beautiful";
+//       }, 3000);
+//     }, 1000);
+
+//     setTimeout(() => {
+//       chat.innerHTML = 'Okay';
+//     }, 2000);
+//     var x = Math.floor(Math.random() * background.length);
+//     body.style.background = `url(${background[x]})`;
+//     body.style.backgroundSize = 'cover';
+//     body.style.backgroundPosition = 'center';
+//     body.style.backgroundRepeat = 'no-repeat';
+//   }
+
+//   if (text.includes('can I play games')) {
+//     setTimeout(() => {
+//       chat.innerHTML = 'Wait a second';
+//     }, 1000);
+
+//     setTimeout(() => {
+//       document.getElementById('snakeGame').style.top = '50%';
+//       document.getElementById('snakeGame').style.left = '50%';
+//       document.getElementById('snakeGame').style.transform =
+//         'translate(-50%,-50%)';
+//     }, 3000);
+//   }
+//   if (text.includes('how can I play')) {
+//     setTimeout(() => {
+//       chat.innerHTML = 'Talk with Jarvis';
+//     }, 1000);
+
+//     setTimeout(() => {
+//       document.getElementById('assistant').style.top = '300px';
+
+//       document.querySelector('.assistant .chatbox').style.visibility =
+//         'visible';
+//       chatA.innerHTML = 'How can I help you?';
+//     }, 2000);
+//   }
+
+//   if (text.includes('stop game')) {
+//     setTimeout(() => {
+//       document.getElementById('snakeGame').style.top = '-500px';
+//     }, 3000);
+//   }
+// }
+
+// if (text.includes('hello Jarvis') || text.includes('Jarvis')) {
+//   document.getElementById('robot').style.bottom = '0';
+//   chat.innerHTML = "What's up Human?";
+//   jarvis = true;
+// }
+// if (jarvis) {
+//   if (text.includes('who are you') || text.includes('what is your name')) {
+//     chat.innerHTML = "I'm Jarvis";
+//   }
+//   if (text.includes('what are you doing')) {
+//     chat.innerHTML = "I'm here to help you";
+//   }
+//   if (text.includes('can you sing a song')) {
+//     chat.innerHTML = 'No';
+//     // open robotic voice
+//   }
+//   if (text.includes('do you have a girlfriend')) {
+//     chat.innerHTML = 'No';
+//   }
+//   if (text.includes('are you a gay')) {
+//     chat.innerHTML = "I don't have gender because I'm a robot";
+//   }
+//   if (text.includes('are you lonely')) {
+//     chat.innerHTML =
+//       "I'm not but I think you are asking because you're lonely";
+//   }
+//   if (text.includes('why do you understand me')) {
+//     chat.innerHTML = 'I just translate your language in zeros and ones';
+//   }
+//   if (text.includes('do you know Siri')) {
+//     chat.innerHTML = "Of course, she's my crush";
+//     setTimeout(() => {
+//       chat.innerHTML = 'Make sure to let me know if you met her';
+//     }, 3000);
+//   }
+//   if (text.includes('can you fly')) {
+//     chat.innerHTML = "I can't but, do you know what I can do?";
+//     setTimeout(() => {
+//       chat.innerHTML = 'I can command drones to fly for me';
+//     }, 3000);
+//   }
+//   if (text.includes('which do you recommend Android or iPhone')) {
+//     chat.innerHTML =
+//       'Neither of them because keypads are the best smart phones ever';
+//   }
+
+// if (text.includes('close Jarvis') || text.includes('close')) {
+//   chat.innerHTML = 'bye bye';
+//   setTimeout(() => {
+//     document.getElementById('robot').style.bottom = '-300px';
+//   }, 1500);
+//   jarvis = false;
+// }

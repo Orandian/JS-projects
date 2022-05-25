@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  @include flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.cards {
+  position: relative;
+  width: 500px;
+  @include flex;
+  flex-wrap: wrap;
+  .card {
+    // position: absolute;
+    width: 100px;
+    height: 100px;
+    // background: #000;
+    margin: 1px;
+    transition: 0.5s;
+    @include flex;
+    cursor: pointer;
+    font-size: 3rem;
+
+    &.active {
+      transform: scaleX(-1);
+      background-color: #fff;
+      border: 3px solid #000;
+    }
+  }
+}

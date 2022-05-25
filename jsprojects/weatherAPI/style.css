@@ -202,4 +202,25 @@ h3 {
 .weather {
   margin: 0 1em;
 }
+
+@media screen and (max-width: 800px) {
+  .weatherApp .container,
+  .weatherApp .panel {
+    position: relative;
+    width: 100%;
+    top: initial;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .weatherApp {
+    min-height: 40em;
+  }
+}
 /*# sourceMappingURL=style.css.map */

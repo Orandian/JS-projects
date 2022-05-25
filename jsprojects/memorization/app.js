@@ -22,35 +22,36 @@ let secondClick = '';
 let firstId = '';
 let secondId = '';
 
-[...cards].forEach((card) => {
-  card.addEventListener('click', (e) => {
-    e.target.classList.add('active');
+function check(e) {
+  if (firstClick == '') {
+    e.classList.add('active');
+    firstClick = e.innerHTML;
+    firstId = e.id;
+    console.log(firstClick);
+    console.log(firstId);
+  } else {
+    e.classList.add('active');
+    secondClick = e.innerHTML;
+    secondId = e.id;
 
-    if (firstClick == '') {
-      firstClick = e.target.innerHTML;
-      firstId = e.target.id;
-      console.log(firstClick);
-      console.log(firstId);
-    } else {
-      secondClick = e.target.innerHTML;
-      secondId = e.target.id;
-
-      if (firstClick == secondClick && firstId != secondId) {
-        document.getElementById(firstId).style.visibility = 'hidden';
-        document.getElementById(secondId).style.visibility = 'hidden';
-      }
-      if (firstClick != secondClick) {
-        document.getElementById(firstId).classList.add('active');
-        document.getElementById(secondId).classList.add('active');
-      }
-
-      firstClick = '';
-      secondClick = '';
-      firstId = '';
-      secondId = '';
+    if (firstClick == secondClick && firstId != secondId) {
+      document.getElementById(firstId).style.visibility = 'hidden';
+      document.getElementById(secondId).style.visibility = 'hidden';
     }
-  });
-});
+
+    if (firstClick != secondClick) {
+      setTimeout(function remove() {
+        e.classList.remove('active');
+      }, 1000);
+      document.getElementById(firstId).setAttribute('class', 'card');
+    }
+
+    firstClick = '';
+    secondClick = '';
+    firstId = '';
+    secondId = '';
+  }
+}
 
 (function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {

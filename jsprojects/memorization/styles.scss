@@ -16,24 +16,40 @@ body {
 }
 .cards {
   position: relative;
-  width: 500px;
+  width: 100%;
   @include flex;
   flex-wrap: wrap;
   .card {
     // position: absolute;
-    width: 100px;
-    height: 100px;
-    // background: #000;
+    transform: translateY(0px);
+    width: 335px;
+    height: 160px;
+    background: #000;
     margin: 1px;
     transition: 0.5s;
     @include flex;
     cursor: pointer;
     font-size: 3rem;
+    animation: animate 3s linear;
+    animation-delay: calc(var(--s) * 1s);
 
     &.active {
       transform: scaleX(-1);
       background-color: #fff;
       border: 3px solid #000;
+    }
+    &.inactive {
+      transform: scaleX(1);
+      background-color: #000;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: translateY(-800px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
     }
   }
 }

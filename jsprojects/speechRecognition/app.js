@@ -5,6 +5,13 @@ const agreeBox = document.getElementById('agreeBox');
 const snakeGame = document.getElementById('snakeGame');
 const musicBox = document.getElementById('musicBox');
 const video = document.getElementById('video');
+
+// SNAKE GAME'S CONSTANTS
+const boardBorder = 'black';
+const boardBackground = '#a2d2ff';
+const snakeColor = 'white';
+const snakeBorder = 'black';
+
 var jarvis = false;
 var move = false;
 var todo = false;
@@ -202,7 +209,7 @@ recognition.addEventListener('result', (e) => {
 
               setTimeout(() => {
                 chat.innerHTML = 'Here you can';
-                snakeGame.style.top = '100px';
+                snakeGame.style.top = '2rem';
               }, 1000);
             }, 2000);
           }, 1000);
@@ -328,11 +335,6 @@ function notagree() {
 }
 
 // ===================== SNAKE GAME =====================
-const boardBorder = 'black';
-const boardBackground = '#a2d2ff';
-const snakeColor = 'white';
-const snakeBorder = 'black';
-
 let snake = [
   { x: 200, y: 200 },
   { x: 190, y: 200 },

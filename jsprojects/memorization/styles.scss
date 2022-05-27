@@ -20,8 +20,6 @@ body {
   @include flex;
   flex-wrap: wrap;
   .card {
-    // position: absolute;
-    transform: translateY(0px);
     width: 335px;
     height: 160px;
     background: #000;
@@ -30,8 +28,6 @@ body {
     @include flex;
     cursor: pointer;
     font-size: 3rem;
-    animation: animate 3s linear;
-    animation-delay: calc(var(--s) * 1s);
 
     &.active {
       transform: scaleX(-1);
@@ -41,15 +37,6 @@ body {
     &.inactive {
       transform: scaleX(1);
       background-color: #000;
-    }
-
-    @keyframes animate {
-      0% {
-        transform: translateY(-800px);
-      }
-      100% {
-        transform: translateY(0px);
-      }
     }
   }
 }

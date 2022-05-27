@@ -40,8 +40,6 @@ body {
 }
 
 .cards .card {
-  -webkit-transform: translateY(0px);
-          transform: translateY(0px);
   width: 335px;
   height: 160px;
   background: #000;
@@ -59,10 +57,6 @@ body {
           align-items: center;
   cursor: pointer;
   font-size: 3rem;
-  -webkit-animation: animate 3s linear;
-          animation: animate 3s linear;
-  -webkit-animation-delay: calc(var(--s) * 1s);
-          animation-delay: calc(var(--s) * 1s);
 }
 
 .cards .card.active {
@@ -76,27 +70,5 @@ body {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
   background-color: #000;
-}
-
-@-webkit-keyframes animate {
-  0% {
-    -webkit-transform: translateY(-800px);
-            transform: translateY(-800px);
-  }
-  100% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-  }
-}
-
-@keyframes animate {
-  0% {
-    -webkit-transform: translateY(-800px);
-            transform: translateY(-800px);
-  }
-  100% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-  }
 }
 /*# sourceMappingURL=styles.css.map */
